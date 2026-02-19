@@ -1,17 +1,27 @@
-from User import User
-from Task import Task, Priority
-from UserService import UserService
+from fastapi import Depends, FastAPI
+from sqlalchemy.orm import Session
 
-user1 = User(101,"sathan","wfw@gmail.com")
+import crud
+import dbtables  # Ensure models are imported before create_all
+import schemas
+from database import Base, SessionLocal, engine
 
-task1 = Task(101,"write","write it efficiently","2hr", Priority.HIGH)
-user1.addTask(task1)
+Base.metadata.create_all(bind=engine)
+app = FastAPI()
 
-service = UserService()
 
-service.getAllTask(user1)
-service.getPendingTask(user1)
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-service.completeTask(task1)
 
-print(task1.getStatus())
+@app.post("/users", response_model=schemas.UserResponse)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    return crud.create_user(db, user)
+
+@app.post("/task/{userID}",response_model=schemas.TaskResponse)
+def create_task(userID:int,task : schemas.TaskCreate,db:Session=Depends(get_db)):
+    return crud.create_task(db,userID,task)
