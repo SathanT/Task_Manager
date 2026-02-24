@@ -26,6 +26,6 @@ class TaskDB(Base):
     priority = Column(Enum(Priority), default=Priority.LOW)
     status = Column(Enum(TaskStatus), default=TaskStatus.PENDING)
 
-    user_id = Column(Integer, ForeignKey("users.id"),ondelete="CASCADE")
+    user_id = Column(Integer, ForeignKey("users.id",ondelete="CASCADE"))
 
     owner = relationship("UserDB", back_populates="tasks")
