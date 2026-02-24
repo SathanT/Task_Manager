@@ -1,11 +1,15 @@
 from fastapi import Depends, FastAPI
 from sqlalchemy.orm import Session
+import logging
 
 import crud
 import dbtables  # Ensure models are imported before create_all
 import schemas
 from database import Base, SessionLocal, engine
+from logging_config import setup_logging
 
+setup_logging()
+logger=logging.getLogger(__name__)
 Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
