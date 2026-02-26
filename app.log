@@ -1,0 +1,12 @@
+2026-02-24 10:40:06,005 | INFO | crud | user created
+2026-02-24 10:40:06,061 | INFO | crud | user found
+2026-02-24 10:40:06,135 | INFO | crud | task created for the user
+2026-02-26 12:07:44,184 | INFO | crud | user created
+2026-02-26 12:11:56,394 | INFO | crud | user created
+2026-02-26 12:20:08,632 | INFO | crud | user created
+2026-02-26 20:08:19,946 | INFO | crud | user created
+2026-02-26 20:08:48,143 | INFO | main | user validation seccuss and found 5
+2026-02-26 20:11:45,912 | INFO | main | user validation seccuss and found 2
+2026-02-26 20:11:48,509 | INFO | main | user validation seccuss and found 2
+2026-02-26 20:15:59,408 | INFO | crud | 2sathantthangavel@gmail.com
+2026-02-26 20:15:59,453 | INFO | main | user validation seccuss and found 2
