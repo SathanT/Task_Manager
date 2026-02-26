@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<link rel="stylesheet" href="main.css">
+<script src="main.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Existing User Panel -->
+    <div class="panel">
+        <h2>Existing User Sign In</h2>
+
+        <div class="input-group">
+            <input type="text" id="user_id" name="user_id" placeholder="User ID" required>
+            <div id="id_error" class="error"></div>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+            <div id="email_error" class="error"></div>
+        </div>
+
+        <button class="login-btn" onclick="validateUser()">Sign In</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- New User Panel -->
+    <div class="panel" style="background:#f8f9fc;">
+        <h2>New User?</h2>
+        <p style="margin-bottom: 25px; color:#555;">
+            Create a new account to get started.  
+            It only takes a few minutes.
+        </p>
+        <a href="index.html">
+            <button class="signup-btn">Create New Account</button>
+        </a>
+        
+    </div>
+
+</div>
+
+</body>
+</html>
