@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict, model_validator
+from Task import Priority, TaskStatus
 
 
 class UserCreate(BaseModel):
@@ -14,12 +15,16 @@ class UserResponse(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class UserValidation(BaseModel):
+    id: int
+    email: str
+
 class TaskCreate(BaseModel):
     name: str
     description: str
     duration: str
-    priority: str = "LOW"
-    status: str = "PENDING"
+    priority: Priority = Priority.LOW
+    status: TaskStatus = TaskStatus.PENDING
 
     @model_validator(mode="after")
     def check(self):
