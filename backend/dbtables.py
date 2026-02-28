@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from backend.database import Base
-from Task import Priority, TaskStatus
+from .database import Base
+from .Task import Priority, TaskStatus
+
 
 
 class UserDB(Base):
@@ -26,6 +27,6 @@ class TaskDB(Base):
     priority = Column(Enum(Priority), default=Priority.LOW)
     status = Column(Enum(TaskStatus), default=TaskStatus.PENDING)
 
-    user_id = Column(Integer, ForeignKey("users.id",ondelete="CASCADE"))
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
 
     owner = relationship("UserDB", back_populates="tasks")

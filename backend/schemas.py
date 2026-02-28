@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict, model_validator
-from Task import Priority, TaskStatus
+
+from .Task import Priority, TaskStatus
 
 
 class UserCreate(BaseModel):
@@ -19,6 +20,7 @@ class UserValidation(BaseModel):
     id: int
     email: str
 
+
 class TaskCreate(BaseModel):
     name: str
     description: str
@@ -26,16 +28,12 @@ class TaskCreate(BaseModel):
     priority: Priority = Priority.LOW
     status: TaskStatus = TaskStatus.PENDING
 
-    @model_validator(mode="after")
-    def check(self):
-        if len(self.name) < 3 or not self.name.isalpha():
-            raise ValueError("name must be alphabetic and at least 3 characters")
-        return self
-
-
 class TaskResponse(BaseModel):
     id: int
     name: str
-    priority:str
-    status:str
+    description: str
+    duration: str | None = None
+    priority: str
+    status: str
+
     model_config = ConfigDict(from_attributes=True)

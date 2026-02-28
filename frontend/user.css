@@ -1,0 +1,218 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #4e73df 0%, #1cc88a 100%);
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --text-primary: #2f3545;
+    --text-secondary: #5c6478;
+    --border-soft: #dfe4f3;
+    --shadow-soft: 0 18px 40px rgba(20, 35, 90, 0.16);
+    --brand-primary: #4e73df;
+    --brand-primary-dark: #2e59d9;
+    --brand-accent: #1cc88a;
+    --danger: #e74a3b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    padding: 16px;
+}
+
+.container {
+    width: min(1150px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.scrolling-window,
+.taskform {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(5px);
+}
+
+.scrolling-window {
+    height: calc(100vh - 32px);
+    max-height: 780px;
+    overflow: auto;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    min-width: 760px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    color: #fff;
+    background: linear-gradient(120deg, var(--brand-primary), var(--brand-accent));
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover,
+.row-content:hover {
+    background-color: rgba(78, 115, 223, 0.08);
+}
+
+.actions-cell {
+    white-space: nowrap;
+}
+
+.actions-cell button {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+tbody tr:hover .actions-cell button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.actions-cell button,
+.row-buttons button,
+#addTaskForm button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.actions-cell button:first-child {
+    background: var(--brand-primary);
+    color: #fff;
+}
+
+.actions-cell button:first-child:hover {
+    background: var(--brand-primary-dark);
+}
+
+.actions-cell button.delete,
+.actions-cell button:last-child {
+    background: var(--danger);
+    color: #fff;
+}
+
+.actions-cell button.delete:hover,
+.actions-cell button:last-child:hover {
+    filter: brightness(0.92);
+}
+
+.taskform {
+    padding: 18px;
+    max-height: calc(100vh - 32px);
+    overflow: auto;
+}
+
+#addTaskForm {
+    display: grid;
+    gap: 10px;
+}
+
+#addTaskForm h2 {
+    margin-bottom: 8px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+#addTaskForm label {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+#addTaskForm input,
+#addTaskForm textarea,
+#addTaskForm select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border-soft);
+    background: #fff;
+    font-size: 0.95rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#addTaskForm textarea {
+    min-height: 74px;
+    resize: vertical;
+}
+
+#addTaskForm input:focus,
+#addTaskForm textarea:focus,
+#addTaskForm select:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.14);
+}
+
+#addTaskForm button {
+    margin-top: 6px;
+    background: var(--brand-accent);
+    color: #fff;
+    width: 100%;
+}
+
+#addTaskForm button:hover {
+    filter: brightness(0.95);
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 14px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .scrolling-window {
+        height: 320px;
+        max-height: none;
+        padding: 6px;
+    }
+
+    .taskform {
+        padding: 18px;
+        max-height: none;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        align-items: stretch;
+    }
+}

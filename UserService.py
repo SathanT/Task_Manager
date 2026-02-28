@@ -1,4 +1,4 @@
-from Task import TaskStatus
+from backend.Task import TaskStatus
 
 class UserService:
 
